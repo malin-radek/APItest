@@ -64,9 +64,11 @@ class MainActivity : AppCompatActivity() {
                     for (x in json_arr) {
                         items.add(x.string("Title"))
                     }
-                    MyListAdapter = ArrayAdapter<String>(me, android.R.layout.simple_list_item_1, items)
-                    FoundsListView.adapter = MyListAdapter
-
+                    if (items.size == 1) { TitleText.setText(items[1])
+                        items.clear() } else {
+                        MyListAdapter = ArrayAdapter<String>(me, android.R.layout.simple_list_item_1, items)
+                        FoundsListView.adapter = MyListAdapter
+                    }
                 }
 
 
@@ -82,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                     TitleText.setText(items[position])
 //                 Toast.makeText(this@MainActivity, items[position], Toast.LENGTH_SHORT).show()
              }
-         });
+         })
     }
 }
 
